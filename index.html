@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Happen</title>
+		    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		    <link rel="stylesheet" href="lib/mocha.css" />
+		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		    <script src="lib/expect.js"></script>
+		    <script src="lib/mocha.js"></script>
+		    <script src="lib/sinon.js"></script>
+			<script src="lib/moment.js"></script>
+			<script>
+		      mocha.setup('bdd');
+			</script>
+	</head>
+	<body>
+		<div id="mocha"></div>
+		<script src='happenTemplate.js'></script>
+		<script src='happen.tests.js'></script>
+
+		<script>
+			      //******** Generate and style tests --- DO NOT ALTER ********
+		      onload = function(){
+		        var runner = window.mochaPhantomJS ? mochaPhantomJS.run() : mocha.run();
+		      };
+
+			var happen = function(item){
+			  item = item || '';
+			  switch(item){
+
+				case 'M': return library.Month.MonthNumber();
+				case 'MM': return library.Month.MonthNumberDblDigit();
+				case 'MMM': return library.Month.AbrOfCurrentMonth();
+				case 'MMMM': return library.Month.CurrentMonth();
+
+				case 'D': return library.Month.DateOfMonth.Numeral();
+				case 'DD': return library.Month.DateOfMonth.DateDblDigit();
+				case 'Do': return library.Month.DateOfMonth.Ordinal();
+
+				case 'DDD': return library.Year.DayOfYear.Numeral();
+				case 'DDDo': return library.Year.DayOfYear.Ordinal();
+				case 'YY': return library.Year.YearAbr();
+				case 'YYYY': return library.Year.YearFull();
+
+
+				case 'dd': return library.Week.FirstTwoOfWeek();
+				case 'ddd': return library.Week.AbrDayOfWeek();
+				case 'dddd': return library.Week.DayOfWeek();
+				case 'W': return library.Week.WeekOfYear();
+
+
+				case 'A': return library.Hour.AMPM.UpperCase();
+				case 'a': return  library.Hour.AMPM.LowerCase();
+				case 'H': return library.Hour.TwentyFourHour();
+				case 'h': return library.Hour.TwelveHour();
+
+				case 'm': return library.Minute.Minute();
+				case 'mm': return library.Minute.DblDigit();
+				case 's': return library.Second.Second();
+				case 'ss': return library.Second.DblDigit();
+
+				case 'X': return library.TimeStamp.UnixTimestamp();
+				case 'x': return library.TimeStamp.UnixMillisecond();
+
+				case 'LT': return library.Local.Time.WithOutSeconds();
+				case 'LTS': return library.Local.Time.WithSeconds();
+				case 'l': return library.Local.MDY.Numeral();
+				case 'LL': return library.Local.MDY.Name();
+			    case '': return library.Defaults();
+
+				default: return 'Invalid Date';
+			  }
+			};
+
+		</script>
+	</body>
+</html>
